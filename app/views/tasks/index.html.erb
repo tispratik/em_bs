@@ -1,0 +1,26 @@
+<h1>Listing Tasks</h1>
+
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Description</th>
+  </tr>
+  <%- @tasks.each do |task|%>
+    <tr>
+      <td><%=h task.name %></td>
+        <td><p><%=h task.description %><p></td>
+      <td><% unless task.delivered_at.nil? %></td>
+        Delivered on: <%= task.delivered_at.to_s(:long) %><br />
+       <% end %>
+    
+      <td><%=link_to 'Show', object_url(task) %></td>
+      <td><%=link_to 'Edit', edit_object_url(task) %></td>
+      <td><%= link_to "Send To", deliver_task_path(task), :confirm => 'Are you sure?', :method => :post %></td>
+      <td><%=link_to 'Destroy', object_url(task), :confirm => 'Are you sure?', :method => :delete %></td>
+    </tr>
+              
+  <% end %>
+</table>
+<br/>
+
+<%= link_to 'New Task', new_object_url %>
