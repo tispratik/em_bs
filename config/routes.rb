@@ -1,5 +1,9 @@
 ActionController::Routing::Routes.draw do |map|
-  map.resources :tasks , :member => { :deliver => :post }
+  map.resources :comments
+
+  map.resources :wikis, :has_many => :comments
+  map.resources :tasks, :has_many => :comments, :member => { :deliver => :post }
+
 
   map.resources :projects
 
@@ -8,6 +12,7 @@ ActionController::Routing::Routes.draw do |map|
   map.login 'login', :controller => 'user_sessions', :action => 'new'
   map.resources :user_sessions
 
+  map.tasks_comment "/tasks/:id/comments", :controller => 'comments', :action => 'index'
   map.resources :users
 
   map.root :projects
