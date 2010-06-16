@@ -1,6 +1,8 @@
 class User < ActiveRecord::Base
   acts_as_authentic
+
   has_many :projects
+  has_many :tasks
 
  has_many :user_tasks
  has_many :tasks, :through => :user_tasks
