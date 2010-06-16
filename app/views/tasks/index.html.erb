@@ -7,7 +7,8 @@
   </tr>
   <%- @tasks.each do |task|%>
     <tr>
-      <td><%=h task.name %></td>
+     <td><%= link_to h(task.name), tasks_comment_path(task) %></td>
+
         <td><p><%=h task.description %><p></td>
       <td><% unless task.delivered_at.nil? %></td>
         Delivered on: <%= task.delivered_at.to_s(:long) %><br />

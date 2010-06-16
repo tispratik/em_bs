@@ -1,0 +1,18 @@
+<p>
+  <strong>Name:</strong><%=h @comment.name %>
+</p>
+<p>
+  <strong>Description:</strong><%=h @comment.description %>
+</p>
+<p>
+  <strong>Task:</strong><%=h @comment.commentable_id %>
+</p>
+<p>
+  <strong>Wiki:</strong><%=h @comment.commentable_type %>
+</p>
+
+<p>
+ <%= link_to "Edit", edit_comment_path(@comment) %> |
+ <%= link_to "Destroy", @comment, :confirm => 'Are you sure?', :method => :delete %> |
+ <%= link_to "View All", comments_path %>
+</p>
