@@ -1,15 +1,15 @@
-class CreateTasks < ActiveRecord::Migration
+class CreateWikis < ActiveRecord::Migration
   def self.up
-    create_table :tasks, :force => true do |t|
+    create_table :wikis, :force => true do |t|
       t.string :name
       t.text :description
       t.references :user
-      t.datetime :delivered_at
+
       t.timestamps
     end
   end
 
   def self.down
-    drop_table :tasks
+    drop_table :wikis
   end
 end
