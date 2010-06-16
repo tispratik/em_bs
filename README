@@ -1,0 +1,11 @@
+Railscasts Example Blog App
+--
+
+To setup the app, just run `rake setup`.
+
+
+Commands
+  script/plugin install git://github.com/collectiveidea/delayed_job.git
+  script/generate delayed_job
+  rake db:migrate
+  rake jobs:work
