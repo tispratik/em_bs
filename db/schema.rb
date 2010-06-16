@@ -9,11 +9,20 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100615092426) do
+ActiveRecord::Schema.define(:version => 20100616160601) do
 
   create_table "assignments", :force => true do |t|
     t.integer  "project_id"
     t.integer  "task_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "comments", :force => true do |t|
+    t.string   "name"
+    t.text     "description"
+    t.integer  "commentable_id"
+    t.string   "commentable_type"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -40,6 +49,7 @@ ActiveRecord::Schema.define(:version => 20100615092426) do
   create_table "tasks", :force => true do |t|
     t.string   "name"
     t.text     "description"
+    t.integer  "user_id"
     t.datetime "delivered_at"
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -59,6 +69,14 @@ ActiveRecord::Schema.define(:version => 20100615092426) do
     t.string   "crypted_password"
     t.string   "password_salt"
     t.datetime "delivered_at"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "wikis", :force => true do |t|
+    t.string   "name"
+    t.text     "description"
+    t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
