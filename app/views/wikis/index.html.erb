@@ -1,0 +1,23 @@
+<h1>Listing Wikis</h1>
+
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Description</th>
+    <th>References</th>
+  </tr>
+  <%- @wikis.each do |wiki|%>
+    <tr>
+      <td><%=h wiki.name %></td>
+      <td><%=h wiki.description %></td>
+      <td><%=h wiki.references %></td>
+    
+      <td><%=link_to 'Show', object_url(wiki) %></td>
+      <td><%=link_to 'Edit', edit_object_url(wiki) %></td>
+      <td><%=link_to 'Destroy', object_url(wiki), :confirm => 'Are you sure?', :method => :delete %></td>
+    </tr>
+  <% end %>
+</table>
+<br/>
+
+<%= link_to 'New Wiki', new_object_url %>

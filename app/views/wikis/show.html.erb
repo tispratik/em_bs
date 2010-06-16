@@ -1,0 +1,13 @@
+<p>
+  <strong>Name:</strong><%=h @wiki.name %>
+</p>
+<p>
+  <strong>Description:</strong><%=h @wiki.description %>
+</p>
+<p>
+  <strong>References:</strong><%=h @wiki.references %>
+</p>
+
+<%= link_to 'Edit', edit_object_url %>
+|
+<%= link_to 'Back', collection_url %>
