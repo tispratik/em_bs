@@ -6,7 +6,7 @@
   </tr>
   <%- @projects.each do |project|%>
     <tr>
-      <td><%=h project.name %></td>
+      <td><h3><%= link_to  project.name , project_tasks_path(project)  %></h3></td>
     
       <td><%=link_to 'Show', object_url(project) %></td>
       <td><%=link_to 'Edit', edit_object_url(project) %></td>

@@ -4,7 +4,7 @@
 
 <%=simple_format @task.description %>
 
-<p><%= link_to "Back to Articles", tasks_path %></p>
+<p><%= link_to "Back to Articles", project_tasks_path %></p>
 
 <% unless @task.comments.empty? %>
   <h2><%= pluralize(@task.comments.size, 'comment') %></h2>
@@ -12,7 +12,7 @@
   <div id="comments">
   <% for comment in @task.comments %>
     <div class="comment">
-      <strong><%= link_to_unless comment.site_url.blank?, h(comment.user.username), h(comment.site_url) %></strong>
+    
       <em>on <%= comment.created_at.strftime('%b %d, %Y at %H:%M') %></em>
       <%=simple_format comment.description %>
     </div>
@@ -20,5 +20,4 @@
   </div>
 <% end %>
 
-<h3>Add your comment:</h3>
-<%= render :partial => 'comments/form' %>
+

@@ -2,11 +2,11 @@
 
 <%= error_messages_for :task %>
 
-<% form_for(:task, :url => collection_url) do |f| %>
+<% form_for(:task, :url => project_tasks_path) do |f| %>
   <%= render :partial => "form", :locals => { :f => f } %>
   <p>
     <%= submit_tag "Create" %>
   </p>
 <% end %>
 <br/>
-<%= link_to 'Back', collection_url %>
+<%= link_to 'Back', project_tasks_path %>
