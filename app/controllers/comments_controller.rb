@@ -1,5 +1,6 @@
 class CommentsController < ResourceController::Base
  before_filter :login_required
+ before_filter :get_id
  
   index.before do
     @commentable = find_commentable
@@ -16,7 +17,7 @@ class CommentsController < ResourceController::Base
        end
         flash[:notice] = "Successfully created comment & Mailing currently being delivered."
     end
-    wants.html {redirect_to tasks_comment_path(@commentable[:id])}
+      wants.html {redirect_to project_task_comments_path(@project, @commentable[:id])}
   end
 
   private
@@ -30,5 +31,8 @@ class CommentsController < ResourceController::Base
     nil
   end
 
+  def get_id
+      @project = Project.find(params[:project_id])
+  end
 
 end
