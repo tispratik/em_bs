@@ -4,6 +4,7 @@
 class ApplicationController < ActionController::Base
   include Authentication
   helper :all
+  include EmBs
   protect_from_forgery
     
 end
