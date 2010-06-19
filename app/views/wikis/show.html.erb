@@ -1,13 +1,22 @@
-<p>
-  <strong>Name:</strong><%=h @wiki.name %>
-</p>
-<p>
-  <strong>Description:</strong><%=h @wiki.description %>
-</p>
-<p>
-  <strong>References:</strong><%=h @wiki.references %>
-</p>
+<% title @wiki.title %>
 
-<%= link_to 'Edit', edit_object_url %>
-|
-<%= link_to 'Back', collection_url %>
+
+
+
+<p><%= link_to "Back to Wiki", project_wikis_path %></p>
+
+<% unless @wiki.comments.empty? %>
+  <h2><%= pluralize(@wiki.comments.size, 'comment') %></h2>
+
+  <div id="comments">
+  <% for comment in @wiki.comments %>
+    <div class="comment">
+
+      <em>on <%= comment.created_at.strftime('%b %d, %Y at %H:%M') %></em>
+      <%=simple_format comment.description %>
+    </div>
+  <% end %>
+  </div>
+<% end %>
+
+

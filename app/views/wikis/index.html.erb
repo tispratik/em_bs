@@ -2,22 +2,18 @@
 
 <table>
   <tr>
-    <th>Name</th>
-    <th>Description</th>
-    <th>References</th>
+    <th>Title</th>
   </tr>
   <%- @wikis.each do |wiki|%>
     <tr>
-      <td><%=h wiki.name %></td>
-      <td><%=h wiki.description %></td>
-      <td><%=h wiki.references %></td>
-    
-      <td><%=link_to 'Show', object_url(wiki) %></td>
-      <td><%=link_to 'Edit', edit_object_url(wiki) %></td>
-      <td><%=link_to 'Destroy', object_url(wiki), :confirm => 'Are you sure?', :method => :delete %></td>
+       <td><h3><%= link_to h(wiki.title), project_wiki_comments_path(@project, wiki) %></h3></td>
+
+      <td><%=link_to 'Show', [@project, wiki] %></td>
+      <td><%=link_to 'Edit', edit_project_wiki_path(@project, wiki) %></td>
+      <td><%=link_to 'Destroy', [@project,wiki], :confirm => 'Are you sure?', :method => :delete %></td>
     </tr>
   <% end %>
 </table>
 <br/>
 
-<%= link_to 'New Wiki', new_object_url %>
+<%= link_to 'New Wiki', new_project_wiki_path %>
