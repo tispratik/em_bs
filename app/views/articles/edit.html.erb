@@ -1,0 +1,16 @@
+<h1>Editing Article</h1>
+
+<%= error_messages_for :article %>
+
+<% form_for(:article, :url => [@project, @article], :html => { :method => :put }) do |f| %>
+  <%= render :partial => "form", :locals => { :f => f } %>
+  <p>
+    <%=submit_tag "Update"%>
+  </p>
+<% end %>
+
+<br/>
+
+<%= link_to 'Show', [@project, @article] %>
+|
+<%= link_to 'Back', project_articles_path %>

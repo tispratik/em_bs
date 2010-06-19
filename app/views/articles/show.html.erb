@@ -1,0 +1,22 @@
+<% title @article.title %>
+
+
+
+
+<p><%= link_to "Back to Article", project_articles_path %></p>
+
+<% unless @article.comments.empty? %>
+  <h2><%= pluralize(@article.comments.size, 'comment') %></h2>
+
+  <div id="comments">
+  <% for comment in @article.comments %>
+    <div class="comment">
+
+      <em>on <%= comment.created_at.strftime('%b %d, %Y at %H:%M') %></em>
+      <%=simple_format comment.description %>
+    </div>
+  <% end %>
+  </div>
+<% end %>
+
+

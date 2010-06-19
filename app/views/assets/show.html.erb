@@ -1,0 +1,21 @@
+
+
+
+
+<p><%= link_to "Back to Task", project_assets_path %></p>
+
+<% unless @asset.comments.empty? %>
+  <h2><%= pluralize(@asset.comments.size, 'comment') %></h2>
+
+  <div id="comments">
+  <% for comment in @asset.comments %>
+    <div class="comment">
+
+      <em>on <%= comment.created_at.strftime('%b %d, %Y at %H:%M') %></em>
+      <%=simple_format comment.description %>
+    </div>
+  <% end %>
+  </div>
+<% end %>
+
+
