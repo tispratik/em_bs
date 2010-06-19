@@ -1,10 +1,9 @@
 <% title @task.name %>
 
-<p class="author"><em>from <%=h @task.user.username %></em></p>
 
-<%=simple_format @task.description %>
 
-<p><%= link_to "Back to Articles", project_tasks_path %></p>
+
+<p><%= link_to "Back to Task", project_tasks_path %></p>
 
 <% unless @task.comments.empty? %>
   <h2><%= pluralize(@task.comments.size, 'comment') %></h2>

@@ -2,7 +2,7 @@
 
 <%= error_messages_for :task %>
 
-<% form_for(:task, :url => project_tasks_path ) do |f| %>
+<% form_for(:task, :url => [@project, @task], :html => { :method => :put } ) do |f| %>
   <%= render :partial => "form", :locals => { :f => f } %>
   <p>
     <%=submit_tag "Update"%>

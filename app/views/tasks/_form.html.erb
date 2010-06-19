@@ -13,14 +13,10 @@
   <%= f.text_field :name %>
 </p>
 
- <p>
-  <label for="task_description">Description:</label>
-  <%= f.text_area :description , :size => '40x10' %>
-</p>
 
 <% @users = User.find(:all) %>
 
  <p>
-  <label for="task_description">Task Assign To Users:</label>
-   <%= select_tag "user[id][]", options_from_collection_for_select(@users, "id", "username"), :size => '5x40' ,:multiple=>true  %>
+  <label for="task_description">Assign To:</label>
+   <%= f.select :assign_to, @users.collect { |c| [c.username, c.id ] }, { :include_blank => '--Select--' }%>
  </p>

@@ -3,20 +3,12 @@
 <table>
   <tr>
     <th>Name</th>
-    <th>Description</th>
   </tr>
   <%- @tasks.each do |task|%>
     <tr>
-     <td><%= link_to h(task.name), project_task_comments_path(@project, task) %></td>
-
-        <td><p><%=h task.description %><p></td>
-      <td><% unless task.delivered_at.nil? %></td>
-        Delivered on: <%= task.delivered_at.to_s(:long) %><br />
-       <% end %>
-    
+     <td><h3><%= link_to h(task.name), project_task_comments_path(@project, task) %></h3></td>     
       <td><%=link_to 'Show', [@project, task] %></td>
       <td><%=link_to 'Edit', edit_project_task_path(@project, task) %></td>
-       <td><%= link_to "Send To", deliver_project_task_path(@project, task), :confirm => 'Are you sure?', :method => :post %></td>
       <td><%=link_to 'Destroy', [@project,task], :confirm => 'Are you sure?', :method => :delete %></td>
     </tr>
               
