@@ -1,12 +1,22 @@
 class Task < ActiveRecord::Base
 
- has_many :assignments
- has_many :projects, :through => :assignments
+ belongs_to :project
 
- belongs_to :user
-
- has_many :user_tasks
- has_many :users, :through => :user_tasks
- 
  has_many :comments, :as => :commentable
+
+ validates_presence_of :name
+ validates_presence_of :assign_to
+
+  def self.create_email_chain  task_users , subject
+      Delayed::Job.enqueue MailingJob.new(task_users, subject) #, 0, 4.minutes.from_now
+  end
+
+  def send_to task, comment
+      if task.is_a? Task
+          assign_to = Task.find(task).assign_to.to_i
+          user = User.find(assign_to)
+          Delayed::Job.enqueue MailingJob.new(user, comment) #, 0, 4.minutes.from_now
+       end
+  end
+
 end

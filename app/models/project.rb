@@ -1,6 +1,8 @@
 class Project < ActiveRecord::Base
   belongs_to :user
-
-  has_many :assignments
-  has_many :tasks, :through => :assignments
+  has_one :task
+  has_many :wikis
+  has_many :articles
+  has_many :assets
+ 
 end
