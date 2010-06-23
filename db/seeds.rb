@@ -9,7 +9,7 @@
 
 User.delete_all
 
-u1 = User.create({:username => 'admin', :email => 'vijay@gmail.com', :password => "123456",:password_confirmation => "123456"})
+u1 = User.create({:username => 'admin', :email => 's.saru3@gmail.com', :password => "123456",:password_confirmation => "123456"})
 
 
 u2 = User.create({:username => 'raj', :email => 'raj@gmail.com', :password => "123456",:password_confirmation => "123456"})
