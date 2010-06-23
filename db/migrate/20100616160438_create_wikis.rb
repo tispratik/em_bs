@@ -1,10 +1,8 @@
 class CreateWikis < ActiveRecord::Migration
   def self.up
     create_table :wikis, :force => true do |t|
-      t.string :name
-      t.text :description
-      t.references :user
-
+      t.references :project
+      t.string :title
       t.timestamps
     end
   end

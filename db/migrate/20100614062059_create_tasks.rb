@@ -1,10 +1,11 @@
 class CreateTasks < ActiveRecord::Migration
   def self.up
     create_table :tasks, :force => true do |t|
+      t.references :project       
       t.string :name
-      t.text :description
-      t.references :user
-      t.datetime :delivered_at
+      t.integer :assign_to
+      t.integer :created_by
+      t.integer :updated_by
       t.timestamps
     end
   end
