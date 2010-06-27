@@ -13,11 +13,11 @@ class CommentsController < ResourceController::Base
        @commentable = find_commentable
        @comment = @commentable.comments.build(params[:comment])      
        if @comment.save
-           @commentable.send_to1 @commentable, params[:comment][:description]  #, 0, 4.minutes.from_now
+           @commentable.send_to @commentable, params[:comment][:description]  #, 0, 4.minutes.from_now
        end
         flash[:notice] = "Successfully created comment & Mailing currently being delivered."
     end
-   #  wants.html {redirect_to  [@project, @commentable, 'comments'] }
+      wants.html {redirect_to  [@project, @commentable, 'comments'] }
   end
 
   private
