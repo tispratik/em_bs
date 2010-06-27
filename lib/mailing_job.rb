@@ -1,8 +1,9 @@
 require 'net/smtp'
 require 'smtp_tls'
 
-
 class MailingJob < Struct.new(:user_mails, :content)
+
+
   def perform
         mailer_config = File.open("#{RAILS_ROOT}/config/email.yml")
         mailer_options = YAML.load(mailer_config)
