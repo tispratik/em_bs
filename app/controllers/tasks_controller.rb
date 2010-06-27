@@ -9,7 +9,7 @@ class TasksController < ResourceController::Base
     after do
        self.objects = params[:task]
        message_str :title_from =>"Task", :from => "me@fromdomain.com", :title_to =>"Assign To", :to => user_objects[0].email ,
-                      :subject => title , :body => "This is a test comment message message."
+                      :subject => title , :body => "This is a test e-mail message."
        Task.create_email_chain user_objects, text_message
     end
      flash "Successfully created! && Mailing currently being delivered."
