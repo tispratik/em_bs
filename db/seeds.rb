@@ -15,7 +15,7 @@ u1 = User.create({:username => 'admin', :email => 's.saru3@gmail.com', :password
 u2 = User.create({:username => 'raj', :email => 'raj@gmail.com', :password => "123456",:password_confirmation => "123456"})
 
 
-u3 = User.create({:username => 'rajiv', :email => 'rajiv@gmail.com', :password => "123456",:password_confirmation => "123456"})
+u3 = User.create({:username => 'rajij', :email => 'ritvij.j@gmail.com', :password => "123456",:password_confirmation => "123456"})
 
 
 u4 = User.create({:username => 'test_user', :email => 'test_user@gmail.com', :password => "123456",:password_confirmation => "123456"})
