@@ -9,11 +9,24 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100616160601) do
+ActiveRecord::Schema.define(:version => 20100619093451) do
 
-  create_table "assignments", :force => true do |t|
+  create_table "articles", :force => true do |t|
     t.integer  "project_id"
-    t.integer  "task_id"
+    t.string   "title"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "assets", :force => true do |t|
+    t.integer  "attachable_id"
+    t.string   "attachable_type"
+    t.string   "data_file_name"
+    t.string   "data_content_type"
+    t.string   "data_file_size"
+    t.string   "orig_name"
+    t.integer  "created_by"
+    t.integer  "updated_by"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -47,17 +60,11 @@ ActiveRecord::Schema.define(:version => 20100616160601) do
   end
 
   create_table "tasks", :force => true do |t|
+    t.integer  "project_id"
     t.string   "name"
-    t.text     "description"
-    t.integer  "user_id"
-    t.datetime "delivered_at"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  create_table "user_tasks", :force => true do |t|
-    t.integer  "user_id"
-    t.integer  "task_id"
+    t.integer  "assign_to"
+    t.integer  "created_by"
+    t.integer  "updated_by"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -74,9 +81,8 @@ ActiveRecord::Schema.define(:version => 20100616160601) do
   end
 
   create_table "wikis", :force => true do |t|
-    t.string   "name"
-    t.text     "description"
-    t.integer  "user_id"
+    t.integer  "project_id"
+    t.string   "title"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
