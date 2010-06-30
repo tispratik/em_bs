@@ -6,5 +6,10 @@ class ApplicationController < ActionController::Base
   helper :all
   include EmBs
   protect_from_forgery
-    
+
+  before_filter :start
+  
+  def start
+     Delayed::Job.enqueue MailReceiver.new #, 0, 4.minutes.from_now
+  end
 end

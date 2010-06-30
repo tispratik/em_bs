@@ -8,7 +8,7 @@ class TasksController < ResourceController::Base
     end
     after do
        self.objects = params[:task]
-       message_str :title_from =>"Task", :from => "me@fromdomain.com", :title_to =>"Assign To", :to => user_objects[0].email ,
+       message_str :title_from =>"Task: #{params[:task][:name]} ", :from => "me@fromdomain.com", :title_to =>"#{params[:task][:name]}", :to => user_objects[0].email ,
                       :subject => title , :body => "This is a test e-mail message."
        Task.create_email_chain user_objects, text_message
     end
