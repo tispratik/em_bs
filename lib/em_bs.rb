@@ -1,5 +1,5 @@
+ 
 module EmBs
-
    @@obj = []
    @@sub = []
   def objects=param

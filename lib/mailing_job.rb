@@ -14,7 +14,9 @@ class MailingJob < Struct.new(:user_mails, :content)
             mailing = User.find(u)
             ActionMailer::Base.perform_delivery_smtp mailer_options , mailing.email, content
           end
-         end
+     
+  end
+
      # end
 end
 
