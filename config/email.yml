@@ -4,6 +4,8 @@
   :port: 587
   :domain: gmail.com
   :authentication: :plain
-  :user_name:
+  :user_name: vijay.ror@gmail.com
   :password: 
-  :tls: true 
+  :tls: true
+  :host: imap.gmail.com
+  :url_port: 993  
