@@ -1,7 +1,7 @@
 #require File.join(File.dirname(__FILE__), '..', 'config', 'environment')
 require 'net/imap'
 require 'net/http'
-class MailReceiver < Struct.new()
+class MailReceiver < Struct.new(:comment)
 
   def perform
      start
