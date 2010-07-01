@@ -20,7 +20,7 @@ class Task < ActiveRecord::Base
           assign_to = Task.find(task).assign_to.to_i
           user = User.find(assign_to)
           user_objects.push user
-           message_str :title_from =>"Task", :from => "me@fromdomain.com", :title_to =>"Assign To", :to => user.email ,
+           message_str :title_from =>"Task: #{Task.find(task).name if Task.find(task) != nil }", :from => "me@fromdomain.com", :title_to =>"#{Task.find(task).name if Task.find(task) != nil }", :to => user.email ,
                       :subject => "Comment" , :body => comment
           Delayed::Job.enqueue MailingJob.new(user_objects, text_message) #, 0, 4.minutes.from_now
        end
