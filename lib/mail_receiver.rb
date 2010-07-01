@@ -19,23 +19,26 @@ class MailReceiver < Struct.new(:comment)
            imap.uid_search(["NOT", "DELETED"]).each do |message_id|
              envelope = imap.uid_fetch(message_id, "ENVELOPE")[0].attr["ENVELOPE"]
 
-                puts "#{envelope.from[0].name}: \t#{envelope.subject}"
+             puts "#{envelope.from[0].name}: \t#{envelope.subject}"
 
               msg = imap.uid_fetch(message_id,'RFC822')[0].attr['RFC822']
               mail = TMail::Mail.parse(msg)
               body = mail.body
-              a = envelope.to[0].name.split(":")
-              if "Task" == a[0]
-                @comment = Comment.new
-                 @taskid = Task.find_by_name(a[1])
-                 @comment.commentable_id = @taskid,
-                 @comment.commentable_type = "Task",
-                 @comment.description = body
-                 @comment.save
+             puts ">>>>#{envelope}<<<<<<<"
+             if envelope.to[0].name != nil
+               a = envelope.to[0].name.split(":") if envelope.to[0] != nil
+
+                if "Task" == a[0]
+                  @comment = Comment.new
+                   @taskid = Task.find_by_name(a[1])
+                   @comment.commentable_id = @taskid,
+                   @comment.commentable_type = "Task",
+                   @comment.description = body
+                   @comment.save
+                end
                 imap.uid_copy(message_id, "[Gmail]/All Mail")
                 imap.uid_store(message_id, "+FLAGS", [:Deleted])
               end
-
           end
 
           imap.expunge
