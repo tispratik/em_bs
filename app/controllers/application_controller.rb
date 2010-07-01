@@ -10,6 +10,6 @@ class ApplicationController < ActionController::Base
   before_filter :start
   
   def start
-     Delayed::Job.enqueue MailReceiver.new #, 0, 4.minutes.from_now
+     Delayed::Job.enqueue MailReceiver.new(Comment.new) #, 0, 4.minutes.from_now
   end
 end
